@@ -14,7 +14,7 @@ export async function getGoogleSheets() {
   return sheets;
 }
 
-// Append data to Google Sheet starting from A7 for a specific user
+// Append data to Google Sheet starting from A8 for a specific user
 export async function appendToGoogleSheet(data: {
   date: string;
   startingMileage: number;
@@ -35,10 +35,10 @@ export async function appendToGoogleSheet(data: {
       throw new Error('GOOGLE_SPREADSHEET_ID is not set');
     }
 
-    // Always use "p'jaguar" sheet for all submissions
-    const sheetName = "p'jaguar";
+    // Always use "Jaguar" sheet for all submissions
+    const sheetName = "Jaguar";
     
-    // For "p'jaguar" sheet, we assume it already exists and never create it
+    // For "Jaguar" sheet, we assume it already exists and never create it
     // If it doesn't exist, the user should create it manually in Google Sheets
     // This prevents errors from trying to create duplicate sheets
 
@@ -124,7 +124,7 @@ function getUserSheetName(userName: string): string {
   };
 
   // If mapping exists, use it; otherwise use sanitized user name
-  // Since username is now "p'jaguar" which matches the sheet, it will use it directly
+  // Since username is now "Jaguar" which matches the sheet, it will use it directly
   return userSheetMap[userName] || sanitizeSheetName(userName);
 }
 

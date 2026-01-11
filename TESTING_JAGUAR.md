@@ -11,9 +11,9 @@
 
 ### Test Steps:
 
-1. **Login as p'jaguar:**
+1. **Login as Jaguar:**
    - Go to the app (usually `http://localhost:3000`)
-   - Username: `p'jaguar`
+   - Username: `Jaguar`
    - Password: `jaguar123`
    - Click "Sign In"
 
@@ -26,14 +26,14 @@
    - Click "บันทึกข้อมูล" (Submit)
 
 4. **What Should Happen:**
-   - ✅ The existing tab named "p'jaguar" will be used in your Google Sheet
-   - ✅ Your data will be written to the first empty row (starting from A7)
+   - ✅ The existing tab named "Jaguar" will be used in your Google Sheet
+   - ✅ Your data will be written to the first empty row (starting from A8)
    - ✅ You'll see a success message showing the row number and sheet name
 
 5. **Verify in Google Sheets:**
    - Open your Google Sheet
-   - Look for the existing tab named "p'jaguar"
-   - Check the first empty row (usually A7, A8, A9, etc.) - your data should be there
+   - Look for the existing tab named "Jaguar"
+   - Check the first empty row (usually A8, A9, A10, etc.) - your data should be there
 
 ### Troubleshooting:
 

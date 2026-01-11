@@ -119,15 +119,28 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    /* Ensure smooth scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
     font-size: 16px;
+    /* Prevent zoom on input focus on iOS */
+    touch-action: manipulation;
   }
   
   /* Mobile-first: Larger UI elements */
   @media (max-width: 768px) {
     body {
       font-size: 18px;
+    }
+    
+    /* Ensure inputs and textareas are scrollable into view */
+    input, textarea, select {
+      scroll-margin-top: 100px;
+      scroll-margin-bottom: 100px;
     }
   }
 }

@@ -38,6 +38,33 @@ export default function FormPage() {
     }
   }, [router])
 
+  // Handle mobile keyboard - scroll inputs into view when focused
+  useEffect(() => {
+    const handleInputFocus = (e: FocusEvent) => {
+      const target = e.target as HTMLElement
+      // Check if it's a mobile device
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768
+      
+      if (isMobile && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA')) {
+        // Small delay to allow keyboard to appear first
+        setTimeout(() => {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest',
+          })
+        }, 300)
+      }
+    }
+
+    // Use event delegation on document for better performance
+    document.addEventListener('focusin', handleInputFocus)
+
+    return () => {
+      document.removeEventListener('focusin', handleInputFocus)
+    }
+  }, [])
+
   // Calculate distance from starting and ending mileage
   const calculateDistance = (start: number, end: number) => {
     return Math.max(0, end - start)
@@ -155,7 +182,7 @@ export default function FormPage() {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 md:px-4 py-6 md:py-8">
+      <main className="container mx-auto px-4 md:px-4 py-6 md:py-8 pb-24 md:pb-8">
         <Card className="max-w-4xl mx-auto">
           <CardHeader>
             <CardTitle className="text-xl md:text-lg">แบบฟอร์มบันทึกค่าใช้จ่ายการขนส่ง</CardTitle>

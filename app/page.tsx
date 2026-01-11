@@ -21,6 +21,33 @@ export default function LoginPage() {
     initializeUsers()
   }, [])
 
+  // Handle mobile keyboard - scroll inputs into view when focused
+  useEffect(() => {
+    const handleInputFocus = (e: FocusEvent) => {
+      const target = e.target as HTMLElement
+      // Check if it's a mobile device
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768
+      
+      if (isMobile && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA')) {
+        // Small delay to allow keyboard to appear first
+        setTimeout(() => {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest',
+          })
+        }, 300)
+      }
+    }
+
+    // Use event delegation on document for better performance
+    document.addEventListener('focusin', handleInputFocus)
+
+    return () => {
+      document.removeEventListener('focusin', handleInputFocus)
+    }
+  }, [])
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
     setError("")

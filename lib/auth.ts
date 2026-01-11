@@ -44,7 +44,7 @@ export function initializeUsers() {
       },
       {
         id: "2",
-        name: "p'jaguar",
+        name: "Jaguar",
         password: "jaguar123",
         createdAt: new Date().toISOString(),
       },
@@ -53,13 +53,13 @@ export function initializeUsers() {
   } else {
     // Users exist, check if Jaguar needs to be added
     const users: User[] = JSON.parse(usersStr)
-    const jaguarExists = users.some(u => u.name === "p'jaguar")
+    const jaguarExists = users.some(u => u.name === "Jaguar")
     
     if (!jaguarExists) {
-      // Add p'jaguar to existing users
+      // Add Jaguar to existing users
       users.push({
         id: "2",
-        name: "p'jaguar",
+        name: "Jaguar",
         password: "jaguar123",
         createdAt: new Date().toISOString(),
       })
